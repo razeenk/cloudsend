@@ -9,26 +9,18 @@
     <!-- 1. TAILWIND CSS CDN (No installation required) -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- 2. TAILWIND CONFIGURATION (In-browser) -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            green: '#1a472a', // Deep forest green
-                            light: '#e8f5e9',
-                            gold: '#c5a059',
-                            dark: '#0f291e',
-                        }
-                    },
-                    fontFamily: {
-                        serif: ['"Playfair Display"', 'serif'],
-                        sans: ['"Inter"', 'sans-serif'],
-                    }
-                }
-            }
+    <style type="text/tailwindcss">
+        @theme {
+            /* Colors */
+            --color-brand-green: #1a472a;
+            --color-brand-light: #e8f5e9;
+            --color-brand-gold: #c5a059;
+            --color-brand-dark: #0f291e;
+            /* Fonts */
+            --font-serif: "Playfair Display", serif;
+            --font-sans: "Inter", sans-serif;
         }
-    </script>
+    </style>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
