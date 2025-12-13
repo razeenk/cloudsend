@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Journal | Clouds End Resort</title>
+    <meta name="description" content="Read stories from the Western Ghats, travel tips, and updates from Clouds End Resort.">
+    
+    <!-- 1. TAILWIND CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- 2. TAILWIND CONFIGURATION -->
+    <style type="text/tailwindcss">
+        @theme {
+            /* Colors */
+            --color-brand-green: #1a472a;
+            --color-brand-light: #e8f5e9;
+            --color-brand-gold: #c5a059;
+            --color-brand-dark: #0f291e;
+            /* Fonts */
+            --font-serif: "Playfair Display", serif;
+            --font-sans: "Inter", sans-serif;
+        }
+    </style>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700 antialiased selection:bg-brand-green selection:text-white bg-gray-50">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-white/95 backdrop-blur-md border-b border-gray-100 text-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-brand-dark">
+                        <img src="./files/logo.png" alt="Logo" class="w-full h-full object-contain">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-2xl font-bold tracking-wide leading-none group-hover:text-brand-gold transition-colors">CLOUDS END</span>
+                        <span class="text-[10px] tracking-[0.2em] uppercase opacity-90">Resort</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                    <a href="index.html#home" class="hover:text-brand-gold transition-colors">HOME</a>
+                    <a href="index.html#about" class="hover:text-brand-gold transition-colors">ABOUT</a>
+                    <a href="index.html#rooms" class="hover:text-brand-gold transition-colors">STAY</a>
+                    <a href="index.html#amenities" class="hover:text-brand-gold transition-colors">EXPERIENCES</a>
+                    <a href="gallery.html" class="hover:text-brand-gold transition-colors">GALLERY</a>
+                    <a href="blogs.html" class="text-brand-gold transition-colors">BLOG</a>
+                    <a href="index.html#contact" class="px-5 py-2.5 bg-brand-gold text-white hover:bg-brand-dark transition-all duration-300 rounded-sm">BOOK NOW</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="focus:outline-none p-2">
+                        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 8.5H20M4 15.5H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-32 pb-16 md:pt-48 md:pb-24 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-brand-green font-bold tracking-widest text-xs uppercase mb-4 block">Our Journal</span>
+            <h1 class="font-serif text-4xl md:text-6xl text-brand-dark font-bold mb-6">Stories from the Clouds</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Explore travel tips, local culture, and updates from the misty peaks of Kakkadampoyil.</p>
+        </div>
+    </header>
+
+    <!-- Blog Listing -->
+    <main class="py-16 bg-white min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Featured Post Container (Inject via JS) -->
+            <div id="featured-post-container" class="mb-16">
+                <!-- Javascript will inject the first post here -->
+            </div>
+
+            <div class="w-full h-px bg-gray-100 mb-16"></div>
+
+            <!-- Recent Posts Grid (Inject via JS) -->
+            <div id="recent-posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Javascript will inject remaining posts here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-brand-dark text-white pt-20 pb-10 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center text-brand-dark">
+                            <img src="./files/logo.png" alt="Logo">
+                        </div>
+                        <span class="font-serif text-xl font-bold">CLOUDS END</span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Located in the serene hills of Kakkadampoyil, we offer a perfect blend of luxury and nature.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-dark flex items-center justify-center transition-all duration-300"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-dark flex items-center justify-center transition-all duration-300"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-dark flex items-center justify-center transition-all duration-300"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <!-- Links -->
+                <div>
+                    <h4 class="font-serif text-lg mb-6 text-brand-gold">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="index.html#about" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="index.html#rooms" class="hover:text-white transition-colors">Accommodations</a></li>
+                        <li><a href="gallery.html" class="hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-serif text-lg mb-6 text-brand-gold">Contact Us</h4>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-brand-gold"></i>
+                            <a href="https://maps.app.goo.gl/Bz9UKbHb8MJAAiE59" target="_blank">Vallanthodu, Kakkadampoyil,<br>Kozhikode, Kerala - 673603</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-brand-gold"></i>
+                            <a href="tel:+91 95628 93891">+91 95628 93891</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-brand-gold"></i>
+                            <a href="mailto:cloudsendresort@gmail.com">cloudsendresort@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Map -->
+                <div class="rounded-sm overflow-hidden h-48 bg-gray-800 relative shadow-lg">
+                    <iframe title="Location Map" class="w-full h-full grayscale hover:grayscale-0 transition-all duration-500" src="https://maps.google.com/maps?q=Clouds%20End%20Resort%20Kakkadampoyil&t=&z=14&ie=UTF8&iwloc=&output=embed" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; 2025 Clouds End Resort. All Rights Reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0"><a href="#" class="hover:text-white">Privacy Policy</a><a href="#" class="hover:text-white">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-brand-dark/95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center space-y-8 hidden">
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-white text-xl p-2 hover:text-brand-gold transition-colors focus:outline-none"><i class="fa-solid fa-xmark"></i></button>
+        <a href="index.html" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Home</a>
+        <a href="index.html#about" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">About</a>
+        <a href="index.html#rooms" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Accommodations</a>
+        <a href="index.html#amenities" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Experiences</a>
+        <a href="gallery.html" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Gallery</a>
+        <a href="blog.html" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Blog</a>
+        <a href="index.html#contact" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Contact</a>
+        <button onclick="bookNowWhatsApp()" class="px-8 py-3 bg-brand-gold text-brand-dark font-bold rounded-full">Book Now</button>
+    </div>
+
+    <script>
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+                setTimeout(() => mobileMenu.classList.remove('translate-x-full'), 10);
+            } else {
+                mobileMenu.classList.add('translate-x-full');
+                document.body.classList.remove('overflow-hidden');
+                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+            }
+        }
+
+        mobileBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        function bookNowWhatsApp() {
+            const message = "Hello, I am interested in booking a stay at Clouds End Resort. Please let me know the availability.";
+            window.open(`https://wa.me/919562893891?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        /* --- DYNAMIC BLOG LOGIC --- */
+        // ADD NEW POSTS TO THIS ARRAY
+        // The FIRST post in this list will automatically become the large "Featured Post" at the top.
+        const blogPosts = [
+            {
+                title: "Explore Kakkadampoyil: The Gavi of Malabar",
+                date: "February 2024",
+                desc: "Discover the hidden gem of the Western Ghats, where mist meets mystery. A complete guide to waterfalls, viewpoints, and nature trails.",
+                image: "./files/blogs/explore-kakkadampoyil/cover.jpeg",
+                link: "blogs/explore-kakkadampoyil.html"
+            }
+            
+        ];
+
+        const featuredContainer = document.getElementById('featured-post-container');
+        const gridContainer = document.getElementById('recent-posts-grid');
+
+        function renderBlogPage() {
+            if (blogPosts.length === 0) return;
+
+            // 1. Render Featured Post (Index 0)
+            const featured = blogPosts[0];
+            featuredContainer.innerHTML = `
+                <a href="${featured.link}" class="group grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="overflow-hidden rounded-sm h-[400px]">
+                        <img src="${featured.image}" alt="${featured.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div>
+                        <span class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 block">${featured.date}</span>
+                        <h2 class="font-serif text-3xl md:text-4xl text-brand-dark mb-4 group-hover:text-brand-green transition-colors">${featured.title}</h2>
+                        <p class="text-gray-600 mb-6 leading-relaxed line-clamp-3">${featured.desc}</p>
+                        <span class="inline-flex items-center text-sm font-bold text-brand-dark border-b-2 border-brand-green pb-1 group-hover:text-brand-gold group-hover:border-brand-gold transition-all">
+                            Read Full Story <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </span>
+                    </div>
+                </a>
+            `;
+
+            // 2. Render Remaining Posts (Index 1+)
+            const recent = blogPosts.slice(1);
+            gridContainer.innerHTML = recent.map(post => `
+                <a href="${post.link}" class="group block">
+                    <div class="overflow-hidden rounded-sm h-64 mb-6 relative">
+                        <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
+                    </div>
+                    <span class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 block">${post.date}</span>
+                    <h3 class="font-serif text-xl text-brand-dark mb-3 group-hover:text-brand-green transition-colors">${post.title}</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">${post.desc}</p>
+                </a>
+            `).join('');
+        }
+
+        renderBlogPage();
+
+    </script>
+</body>
+</html>

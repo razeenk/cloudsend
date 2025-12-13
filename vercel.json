@@ -1,0 +1,10 @@
+{
+    "cleanUrls": true,
+    "routes":[
+    {
+        "src": "/archives/(.*)",
+        "status": 404,
+        "dest": "/404.html"
+    }
+    ]
+}

@@ -7,10 +7,9 @@
     <title>Clouds End Resort | Kakkadampoyil</title>
     <meta name="description" content="Experience the serenity of Western Ghats at Clouds End Resort, Kakkadampoyil. Luxury cottages, infinity pool, and breathtaking views.">
     
-    <!-- 1. TAILWIND CSS CDN -->
+    <!-- 1. TAILWIND CSS CDN (No installation required) -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
-    <!-- 2. TAILWIND CONFIGURATION -->
+    <!-- 2. TAILWIND CONFIGURATION (In-browser) -->
     <style type="text/tailwindcss">
         @theme {
             /* Colors */
@@ -98,8 +97,8 @@
             <div class="flex justify-between items-center">
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-2 group">
-                    <div class="w-10 h-10 rounded-full flex items-center justify-center text-brand-dark">
-                        <img src="./files/logo.png" alt="Logo" class="w-full h-full object-contain">
+                    <div class="w-10 h-10  rounded-full flex items-center justify-center text-brand-dark">
+                        <img  src="./files/logo.png"></img>
                     </div>
                     <div class="flex flex-col">
                         <span class="font-serif text-2xl font-bold tracking-wide leading-none group-hover:text-brand-gold transition-colors">CLOUDS END</span>
@@ -114,13 +113,13 @@
                     <a href="#rooms" class="hover:text-brand-gold transition-colors">STAY</a>
                     <a href="#amenities" class="hover:text-brand-gold transition-colors">EXPERIENCES</a>
                     <a href="gallery.html" class="hover:text-brand-gold transition-colors">GALLERY</a>
-                    <a href="#journal" class="hover:text-brand-gold transition-colors">BLOG</a>
                     <button onclick="bookNowWhatsApp()" class="px-5 py-2.5 bg-brand-gold text-white hover:bg-white hover:text-brand-green transition-all duration-300 rounded-sm">BOOK NOW</button>
                 </div>
 
                 <!-- Mobile Menu Button (2 Stripes) -->
                 <div class="md:hidden">
                     <button id="mobile-menu-btn" class="focus:outline-none p-2">
+                        <!-- Custom SVG for Thinner 2-Stripe Hamburger -->
                         <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M4 8.5H20M4 15.5H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
@@ -131,6 +130,7 @@
     </nav>
 
     <!-- Hero Section -->
+    <!-- CHANGED: Removed 'overflow-hidden' so the booking widget can stick out the bottom without being clipped -->
     <section id="home" class="hero-bg min-h-screen flex flex-col items-center justify-center relative pt-32 pb-20 md:pb-40 z-30">
         <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60"></div>
         
@@ -143,6 +143,7 @@
                 Escape to the Western Ghats. Rejuvenate yourself and indulge in the breathtaking beauty of nature at Kakkadampoyil.
             </p>
             
+            <!-- Hidden on mobile, visible on desktop -->
             <div class="hidden md:flex flex-row gap-4 justify-center items-center">
                 <button onclick="document.getElementById('rooms').scrollIntoView()" class="px-8 py-4 border border-white text-white hover:bg-white hover:text-brand-green transition-all duration-300 uppercase tracking-widest text-xs font-bold w-full md:w-auto">
                     View Rooms
@@ -155,6 +156,7 @@
         </div>
 
         <!-- Booking Widget -->
+        <!-- z-index ensures it sits above the next section -->
         <div class="relative z-20 -mt-16 mx-4 w-[calc(100%-2rem)] md:absolute md:-bottom-12 md:left-0 md:right-0 md:mt-0 md:mx-auto max-w-5xl bg-white shadow-2xl rounded-sm p-6 md:p-8 grid grid-cols-1 md:grid-cols-4 gap-4 items-end border-t-4 border-brand-gold" data-aos="fade-up" data-aos-delay="400">
             <div>
                 <label class="block text-xs uppercase tracking-wider text-gray-500 mb-1">Check In</label>
@@ -200,8 +202,11 @@
                     <p class="text-gray-600 mb-6 leading-relaxed">
                         Clouds End is designed with an imaginative insight into the world of comfort and happiness. Located in the misty heights of Kakkadampoyil, we offer more than just a stay—we offer an experience.
                     </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Whether you're looking to unwind in our infinity pool overlooking the valleys, stay in our unique treehouses, or enjoy a campfire under the stars, Clouds End is your perfect escape from the ordinary.
+                    </p>
                     
-                    <div class="grid grid-cols-2 gap-6 mb-8 mt-8">
+                    <div class="grid grid-cols-2 gap-6 mb-8">
                         <div class="flex items-center gap-3">
                             <i class="fa-solid fa-mountain-sun text-brand-gold text-2xl"></i>
                             <span class="text-sm font-medium text-brand-dark">Mountain Views</span>
@@ -228,7 +233,7 @@
         </div>
     </section>
 
-    <!-- Accommodations -->
+    <!-- Accommodations (UPDATED: Horizontal Scrolling with Dots) -->
     <section id="rooms" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -237,8 +242,9 @@
                 <div class="w-24 h-1 bg-brand-green mx-auto"></div>
             </div>
 
+            <!-- Carousel Wrapper -->
             <div class="relative group">
-                <!-- Buttons -->
+                <!-- Navigation Buttons -->
                 <button id="room-prev-btn" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full shadow-xl flex items-center justify-center text-brand-dark hover:bg-brand-gold hover:text-white transition-all opacity-0 group-hover:opacity-100 hidden md:flex">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
@@ -246,19 +252,22 @@
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
 
-                <!-- Scroll Container -->
+                <!-- Scrollable Container -->
                 <div id="rooms-container" class="flex overflow-x-auto gap-8 pb-10 snap-x snap-mandatory hide-scrollbar px-4 scroll-smooth">
                     <!-- Javascript will inject rooms here -->
                 </div>
             </div>
 
             <!-- Pagination Dots -->
-            <div id="room-dots" class="flex justify-center gap-2 mt-2"></div>
+            <div id="room-dots" class="flex justify-center gap-2 mt-2">
+                <!-- Dots injected by JS -->
+            </div>
         </div>
     </section>
 
-    <!-- Amenities Parallax -->
+    <!-- Amenities / Experience Parallax -->
     <section id="amenities" class="py-24 relative bg-brand-dark text-white overflow-hidden">
+        <!-- Background decorative elements -->
         <div class="absolute top-0 right-0 w-96 h-96 bg-brand-green rounded-full blur-[100px] opacity-20"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-gold rounded-full blur-[100px] opacity-10"></div>
 
@@ -267,23 +276,46 @@
                 <div>
                     <span class="text-brand-gold font-bold tracking-widest text-xs uppercase mb-2 block">Our Amenities</span>
                     <h2 class="font-serif text-4xl md:text-5xl mb-8 leading-tight">Designed for <br/>Your Comfort</h2>
+                    <p class="text-gray-300 mb-10 leading-relaxed text-lg font-light">
+                        We believe hospitality is an art. From our crystal-clear infinity pool that merges with the horizon to our dedicated kids' play areas, every detail is curated for your relaxation.
+                    </p>
                     
                     <ul class="space-y-6">
                         <li class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-gold flex-shrink-0"><i class="fa-solid fa-person-swimming text-xl"></i></div>
-                            <div><h4 class="font-serif text-xl mb-1">Infinity Pool</h4><p class="text-sm text-gray-400">Soak in the views of the valley from our edge-less pool.</p></div>
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-person-swimming text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl mb-1">Infinity Pool</h4>
+                                <p class="text-sm text-gray-400">Soak in the views of the valley from our edge-less pool.</p>
+                            </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-gold flex-shrink-0"><i class="fa-solid fa-fire text-xl"></i></div>
-                            <div><h4 class="font-serif text-xl mb-1">Campfire & BBQ</h4><p class="text-sm text-gray-400">Evening gatherings under the starry sky.</p></div>
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-fire text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl mb-1">Campfire & BBQ</h4>
+                                <p class="text-sm text-gray-400">Evening gatherings under the starry sky.</p>
+                            </div>
                         </li>
                         <li class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-gold flex-shrink-0"><i class="fa-solid fa-child-reaching text-xl"></i></div>
-                            <div><h4 class="font-serif text-xl mb-1">Kids Play Area</h4><p class="text-sm text-gray-400">Safe and fun environment for the little ones.</p></div>
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-child-reaching text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl mb-1">Kids Play Area</h4>
+                                <p class="text-sm text-gray-400">Safe and fun environment for the little ones.</p>
+                            </div>
                         </li>
                          <li class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-gold flex-shrink-0"><i class="fa-solid fa-truck-monster text-xl"></i></div>
-                            <div><h4 class="font-serif text-xl mb-1">Off-Road Safari</h4><p class="text-sm text-gray-400">Adventure trips to explore the rugged terrain.</p></div>
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-gold flex-shrink-0">
+                                <i class="fa-solid fa-truck-monster text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-xl mb-1">Off-Road Safari</h4>
+                                <p class="text-sm text-gray-400">Adventure trips to explore the rugged terrain.</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -293,7 +325,9 @@
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
                         <div>
                             <p class="font-serif text-2xl italic">"The view from the pool is simply unmatched."</p>
-                            <div class="flex text-brand-gold mt-2"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                            <div class="flex text-brand-gold mt-2">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -313,7 +347,9 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px]">
                 <div class="col-span-2 row-span-2 relative group overflow-hidden rounded-sm cursor-pointer">
                     <img src="./files/gallery/gallery-1.jpg" alt="Landscape" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"><i class="fa-solid fa-plus text-white text-3xl"></i></div>
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fa-solid fa-plus text-white text-3xl"></i>
+                    </div>
                 </div>
                 <div class="col-span-1 row-span-1 relative group overflow-hidden rounded-sm cursor-pointer">
                     <img src="./files/gallery/gallery-2.jpeg" alt="Resort" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
@@ -336,49 +372,40 @@
             </div>
             
             <div class="text-center mt-12">
-                <a href="gallery.html" class="inline-block px-8 py-3 border border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white transition-all duration-300 uppercase tracking-widest text-xs font-bold">View Full Gallery</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonial Slider -->
-    <section id="testimonial-slider" class="py-24 bg-white relative">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-             <span class="text-brand-green font-bold tracking-widest text-xs uppercase mb-6 block">Guest Stories</span>
-             <i class="fa-solid fa-quote-left text-4xl text-brand-gold mb-8 opacity-50"></i>
-             <div id="testimonial-container" class="relative min-h-[300px] md:min-h-[250px] overflow-hidden"></div>
-             <div class="flex justify-center gap-6 mt-8">
-                <button id="prev-btn" class="w-10 h-10 rounded-full border border-gray-300 text-gray-400 hover:border-brand-gold hover:text-brand-gold hover:bg-brand-light transition-all flex items-center justify-center"><i class="fa-solid fa-arrow-left"></i></button>
-                <button id="next-btn" class="w-10 h-10 rounded-full border border-gray-300 text-gray-400 hover:border-brand-gold hover:text-brand-gold hover:bg-brand-light transition-all flex items-center justify-center"><i class="fa-solid fa-arrow-right"></i></button>
-             </div>
-        </div>
-    </section>
-
-    <!-- NEW BLOG SECTION (ADDED) -->
-    <section id="journal" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-brand-green font-bold tracking-widest text-xs uppercase mb-2 block">Our Journal</span>
-                <h2 class="font-serif text-4xl md:text-5xl text-brand-dark">Latest from the Mountains</h2>
-            </div>
-
-            <!-- Blog Grid -->
-            <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Javascript will inject posts here -->
-            </div>
-
-            <!-- See More Button (Hidden by default) -->
-            <div id="blog-view-more" class="text-center mt-12 hidden">
-                <a href="blogs.html" class="inline-block px-8 py-3 border border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white transition-all duration-300 uppercase tracking-widest text-xs font-bold">
-                    View All Stories
+                <a href="gallery.html" class="inline-block px-8 py-3 border border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white transition-all duration-300 uppercase tracking-widest text-xs font-bold">
+                    View Full Gallery
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Instagram Widget -->
+    <!-- Testimonial Slider (UPDATED) -->
+    <section class="py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+             <span class="text-brand-green font-bold tracking-widest text-xs uppercase mb-6 block">Guest Stories</span>
+             <i class="fa-solid fa-quote-left text-4xl text-brand-gold mb-8 opacity-50"></i>
+             
+             <!-- Slider Container -->
+             <div id="testimonial-slider" class="relative min-h-[300px] md:min-h-[250px] overflow-hidden">
+                 <!-- Testimonials will be injected here by JS -->
+             </div>
+
+             <!-- Navigation Controls -->
+             <div class="flex justify-center gap-6 mt-8">
+                <button id="prev-btn" class="w-10 h-10 rounded-full border border-gray-300 text-gray-400 hover:border-brand-gold hover:text-brand-gold hover:bg-brand-light transition-all flex items-center justify-center">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button id="next-btn" class="w-10 h-10 rounded-full border border-gray-300 text-gray-400 hover:border-brand-gold hover:text-brand-gold hover:bg-brand-light transition-all flex items-center justify-center">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+             </div>
+        </div>
+    </section>
+
+    <!-- NEW INSTAGRAM WIDGET SECTION (BEHOLD.SO) -->
     <section class="py-24 bg-brand-light relative" id="instagram-feed">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Updated Header: Centered Alignment -->
             <div class="flex flex-col items-center text-center mb-12 gap-4">
                 <div>
                     <span class="text-brand-green font-bold tracking-widest text-xs uppercase mb-2 block">Social Media</span>
@@ -390,9 +417,14 @@
                     Follow Us <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
+
+            <!-- BEHOLD.SO WIDGET CONTAINER -->
             <div class="w-full">
                 <behold-widget feed-id="K80NBXBmi49olUqPx06H"></behold-widget>
+                
+                
             </div>
+
         </div>
     </section>
 
@@ -403,8 +435,12 @@
             <h2 class="font-serif text-4xl md:text-5xl mb-6">Ready to Touch the Clouds?</h2>
             <p class="text-brand-light/80 mb-10 text-lg">Book your stay today and experience the magic of Western Ghats.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button onclick="bookNowWhatsApp()" class="px-8 py-4 bg-white text-brand-green font-bold rounded-sm hover:bg-brand-gold hover:text-white transition-all duration-300 shadow-lg cursor-pointer"><i class="fa-brands fa-whatsapp mr-2"></i> Book via WhatsApp</button>
-                <a href="mailto:cloudsendresort@gmail.com" class="px-8 py-4 border border-white text-white font-bold rounded-sm hover:bg-white hover:text-brand-green transition-all duration-300">Email Us</a>
+                <button onclick="bookNowWhatsApp()" class="px-8 py-4 bg-white text-brand-green font-bold rounded-sm hover:bg-brand-gold hover:text-white transition-all duration-300 shadow-lg cursor-pointer">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> Book via WhatsApp
+                </button>
+                <a href="mailto:cloudsendresort@gmail.com" class="px-8 py-4 border border-white text-white font-bold rounded-sm hover:bg-white hover:text-brand-green transition-all duration-300">
+                    Email Us
+                </a>
             </div>
         </div>
     </section>
@@ -416,17 +452,22 @@
                 <!-- Brand -->
                 <div>
                     <div class="flex items-center gap-2 mb-6">
-                        <div class="w-8 h-8  rounded-full flex items-center justify-center text-brand-dark"><img src="./files/logo.png"></div>
+                        <div class="w-8 h-8  rounded-full flex items-center justify-center text-brand-dark">
+                            <img src="./files/logo.png"></img>
+                        </div>
                         <span class="font-serif text-xl font-bold">CLOUDS END</span>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-6">Located in the serene hills of Kakkadampoyil, we offer a perfect blend of luxury and nature.</p>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        Located in the serene hills of Kakkadampoyil, we offer a perfect blend of luxury and nature. Come, rejuvenate your soul.
+                    </p>
                     <div class="flex gap-4">
                         <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-dark flex items-center justify-center transition-all duration-300"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-dark flex items-center justify-center transition-all duration-300"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" class="w-10 h-10 rounded-full bg-white/5 hover:bg-brand-gold hover:text-brand-dark flex items-center justify-center transition-all duration-300"><i class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
-                <!-- Links -->
+
+                <!-- Quick Links -->
                 <div>
                     <h4 class="font-serif text-lg mb-6 text-brand-gold">Quick Links</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
@@ -437,6 +478,7 @@
                         <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
                     </ul>
                 </div>
+
                 <!-- Contact -->
                 <div>
                     <h4 class="font-serif text-lg mb-6 text-brand-gold">Contact Us</h4>
@@ -455,27 +497,43 @@
                         </li>
                     </ul>
                 </div>
-                <!-- Map -->
+
+                <!-- Location Map -->
                 <div class="rounded-sm overflow-hidden h-48 bg-gray-800 relative shadow-lg">
-                    <iframe title="Location Map" class="w-full h-full grayscale hover:grayscale-0 transition-all duration-500" src="https://maps.google.com/maps?q=Clouds%20End%20Resort%20Kakkadampoyil&t=&z=14&ie=UTF8&iwloc=&output=embed" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe 
+                        title="Location Map"
+                        class="w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+                        src="https://maps.google.com/maps?q=Clouds%20End%20Resort%20Kakkadampoyil&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
+
             <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                <p>&copy; 2025 Clouds End Resort. All Rights Reserved.</p>
-                <div class="flex gap-6 mt-4 md:mt-0"><a href="#" class="hover:text-white">Privacy Policy</a><a href="#" class="hover:text-white">Terms of Service</a></div>
+                <p>&copy; 2024 Clouds End Resort. All Rights Reserved.</p>
+                <div class="flex gap-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu Overlay moved here (OUTSIDE NAV) -->
     <div id="mobile-menu" class="fixed inset-0 z-[60] bg-brand-dark/95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center space-y-8 hidden">
-        <button id="close-menu-btn" class="absolute top-6 right-6 text-white text-xl p-2 hover:text-brand-gold transition-colors focus:outline-none"><i class="fa-solid fa-xmark"></i></button>
+        <!-- Close Button -->
+        <button id="close-menu-btn" class="absolute top-6 right-6 text-white text-xl p-2 hover:text-brand-gold transition-colors focus:outline-none">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        
         <a href="#home" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Home</a>
         <a href="#about" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">About</a>
         <a href="#rooms" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Accommodations</a>
         <a href="#amenities" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Experiences</a>
         <a href="gallery.html" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Gallery</a>
-        <a href="#journal" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Blog</a>
         <a href="#contact" class="text-2xl font-serif text-white hover:text-brand-gold mobile-link">Contact</a>
         <button onclick="bookNowWhatsApp()" class="px-8 py-3 bg-brand-gold text-brand-dark font-bold rounded-full">Book Now</button>
     </div>
@@ -483,78 +541,128 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // WhatsApp Logic
         const phoneNumber = "919562893891";
 
         function sendWhatsAppInquiry() {
             const checkIn = document.getElementById('booking-checkin').value;
             const checkOut = document.getElementById('booking-checkout').value;
             const guests = document.getElementById('booking-guests').value;
+
             let message = "Hello, I would like to check availability at Clouds End Resort.";
-            if (checkIn && checkOut) message += `\n\nCheck-in: ${checkIn}\nCheck-out: ${checkOut}`;
+            
+            if (checkIn && checkOut) {
+                message += `\n\nCheck-in: ${checkIn}\nCheck-out: ${checkOut}`;
+            }
             message += `\nGuests: ${guests}`;
-            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
         }
 
         function bookNowWhatsApp() {
             const message = "Hello, I am interested in booking a stay at Clouds End Resort. Please let me know the availability.";
-            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
         }
 
         function bookSpecificRoom(roomName) {
             const message = `Hello, I'm interested in booking the *${roomName}* at Clouds End Resort.\n\nPlease provide details regarding availability and pricing.`;
-            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
         }
 
-        AOS.init({ once: true, offset: 100, duration: 800 });
 
+        // Initialize AOS Animation
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+        });
+
+        // Navbar Scroll Effect
         const navbar = document.getElementById('navbar');
-        let isScrolled = false;
+        let isScrolled = false; // Add state to prevent constant DOM updates
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 if (!isScrolled) {
-                    navbar.classList.add('glass-nav', 'shadow-sm', 'py-2', 'text-brand-dark');
-                    navbar.classList.remove('py-4', 'text-white');
+                    navbar.classList.add('glass-nav');
+                    navbar.classList.add('shadow-sm');
+                    navbar.classList.add('py-2');
+                    navbar.classList.remove('py-4');
+                    navbar.classList.remove('text-white');
+                    navbar.classList.add('text-brand-dark');
                     isScrolled = true;
                 }
             } else {
                 if (isScrolled) {
-                    navbar.classList.remove('glass-nav', 'shadow-sm', 'py-2', 'text-brand-dark');
-                    navbar.classList.add('py-4', 'text-white');
+                    navbar.classList.remove('glass-nav');
+                    navbar.classList.remove('shadow-sm');
+                    navbar.classList.remove('py-2');
+                    navbar.classList.add('py-4');
+                    navbar.classList.add('text-white');
+                    navbar.classList.remove('text-brand-dark');
                     isScrolled = false;
                 }
             }
         });
 
+        // Mobile Menu Toggle logic
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const closeMenuBtn = document.getElementById('close-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
 
         function toggleMenu() {
-            if (mobileMenu.classList.contains('hidden')) {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
                 mobileMenu.classList.remove('hidden');
-                document.body.classList.add('overflow-hidden');
-                setTimeout(() => mobileMenu.classList.remove('translate-x-full'), 10);
+                document.body.classList.add('overflow-hidden'); // Disable body scroll
+                setTimeout(() => {
+                    mobileMenu.classList.remove('translate-x-full');
+                }, 10);
             } else {
                 mobileMenu.classList.add('translate-x-full');
-                document.body.classList.remove('overflow-hidden');
-                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+                document.body.classList.remove('overflow-hidden'); // Enable body scroll
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
             }
         }
 
         mobileBtn.addEventListener('click', toggleMenu);
         closeMenuBtn.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+
+        /* --- TESTIMONIAL SLIDER LOGIC --- */
         const testimonials = [
-            { text: "A dream destination that promises you an incredible space, service and brings you an unforgettable experience.", author: "George Kurian" },
-            { text: "The treehouse experience was magical. Waking up to the mist and the sound of birds was unforgettable.", author: "Sarah Jenkins" },
-            { text: "We stayed at the A-Frame cabin and it was stunning. The staff went above and beyond.", author: "Rahul & Priya" },
-            { text: "Perfect getaway from the city chaos. The off-road drive to reach the resort set the mood.", author: "Arun Nair" }
+            {
+                text: "A dream destination that promises you an incredible space, service and brings you an unforgettable experience. The infinity pool view is to die for!",
+                author: "George Kurian"
+            },
+            {
+                text: "The treehouse experience was magical. Waking up to the mist and the sound of birds was unforgettable. Highly recommended for couples.",
+                author: "Sarah Jenkins"
+            },
+            {
+                text: "We stayed at the A-Frame cabin and it was stunning. The staff went above and beyond to make our anniversary special. The food was delicious too!",
+                author: "Rahul & Priya"
+            },
+             {
+                text: "Perfect getaway from the city chaos. The off-road drive to reach the resort set the mood for adventure, and the calm at the top was mesmerizing.",
+                author: "Arun Nair"
+            }
         ];
 
         let currentTestimonialIndex = 0;
-        const sliderContainer = document.getElementById('testimonial-container');
+        const sliderContainer = document.getElementById('testimonial-slider');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
 
@@ -563,32 +671,106 @@
             testimonials.forEach((t, index) => {
                 const div = document.createElement('div');
                 div.className = `testimonial-slide ${index === currentTestimonialIndex ? 'active' : ''} absolute inset-0 flex flex-col items-center justify-center px-4`;
-                div.innerHTML = `<p class="font-serif text-xl md:text-3xl text-brand-dark italic mb-6 leading-relaxed">"${t.text}"</p><cite class="not-italic font-bold text-gray-500 uppercase tracking-widest text-xs">- ${t.author}</cite>`;
+                div.innerHTML = `
+                    <p class="font-serif text-xl md:text-3xl text-brand-dark italic mb-6 leading-relaxed">
+                         "${t.text}"
+                    </p>
+                    <cite class="not-italic font-bold text-gray-500 uppercase tracking-widest text-xs">- ${t.author}</cite>
+                `;
                 sliderContainer.appendChild(div);
+            });
+        }
+
+        function showTestimonial(index) {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            slides.forEach((slide, i) => {
+                if (i === index) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
             });
         }
 
         function nextTestimonial() {
             currentTestimonialIndex = (currentTestimonialIndex + 1) % testimonials.length;
-            renderTestimonials();
+            showTestimonial(currentTestimonialIndex);
         }
+
         function prevTestimonial() {
             currentTestimonialIndex = (currentTestimonialIndex - 1 + testimonials.length) % testimonials.length;
-            renderTestimonials();
+            showTestimonial(currentTestimonialIndex);
         }
 
+        // Initialize
         renderTestimonials();
-        nextBtn.addEventListener('click', () => { nextTestimonial(); resetAutoSlide(); });
-        prevBtn.addEventListener('click', () => { prevTestimonial(); resetAutoSlide(); });
-        let autoSlideInterval = setInterval(nextTestimonial, 5000);
-        function resetAutoSlide() { clearInterval(autoSlideInterval); autoSlideInterval = setInterval(nextTestimonial, 5000); }
 
+        // Event Listeners
+        nextBtn.addEventListener('click', () => {
+            nextTestimonial();
+            resetAutoSlide();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            prevTestimonial();
+            resetAutoSlide();
+        });
+
+        // Auto Slide
+        let autoSlideInterval = setInterval(nextTestimonial, 5000);
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(nextTestimonial, 5000);
+        }
+
+        /* --- DYNAMIC ROOMS LOGIC (UPDATED FOR CAROUSEL) --- */
         const roomsList = [
-            { title: "Tree House Cottage", desc: "Elevated luxury amidst the canopy.", img: "./files/rooms/single-treehouse.jpg", beds: "2", view: "View", ac: "AC", badge: "Most Popular" },
-            { title: "A Frame Cottage", desc: "Iconic design with stunning vistas.", img: "https://images.unsplash.com/photo-1449156493391-d2cfa28e468b?q=80&w=2067&auto=format&fit=crop", beds: "2", view: "Balcony", ac: "AC", badge: null },
-            { title: "Double Cottage", desc: "Spacious comfort for the whole group.", img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2070&auto=format&fit=crop", beds: "4", view: "Lounge", ac: "AC", badge: null },
-            { title: "Single Cottage", desc: "Iconic design with stunning vistas.", img: "https://images.unsplash.com/photo-1449156493391-d2cfa28e468b?q=80&w=2067&auto=format&fit=crop", beds: "2", view: "Balcony", ac: "AC", badge: null },
-            { title: "Double Tree Cottage", desc: "Spacious comfort for the whole group.", img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2070&auto=format&fit=crop", beds: "4", view: "Lounge", ac: "AC", badge: null },
+            {
+                title: "Tree House Cottage",
+                desc: "Elevated luxury amidst the canopy.",
+                img: "./files/rooms/single-treehouse.jpg",
+                beds: "2",
+                view: "View",
+                ac: "AC",
+                badge: "Most Popular"
+            },
+            {
+                title: "A Frame Cottage",
+                desc: "Iconic design with stunning vistas.",
+                img: "https://images.unsplash.com/photo-1449156493391-d2cfa28e468b?q=80&w=2067&auto=format&fit=crop",
+                beds: "2",
+                view: "Balcony",
+                ac: "AC",
+                badge: null
+            },
+            {
+                title: "Double Cottage",
+                desc: "Spacious comfort for the whole group.",
+                img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2070&auto=format&fit=crop",
+                beds: "4",
+                view: "Lounge",
+                ac: "AC",
+                badge: null
+            },
+            {
+                title: "Single Cottage",
+                desc: "Iconic design with stunning vistas.",
+                img: "https://images.unsplash.com/photo-1449156493391-d2cfa28e468b?q=80&w=2067&auto=format&fit=crop",
+                beds: "2",
+                view: "Balcony",
+                ac: "AC",
+                badge: null
+            },
+            {
+                title: "Double Tree Cottage",
+                desc: "Spacious comfort for the whole group.",
+                img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2070&auto=format&fit=crop",
+                beds: "4",
+                view: "Lounge",
+                ac: "AC",
+                badge: null
+            },
         ];
 
         const roomsContainer = document.getElementById('rooms-container');
@@ -600,88 +782,110 @@
             roomsContainer.innerHTML = '';
             roomsList.forEach((room, index) => {
                 const roomCard = document.createElement('div');
+                // UPDATED CARD CLASS: Fixed width for carousel scrolling
                 roomCard.className = "flex-shrink-0 w-[85vw] md:w-[400px] bg-white shadow-lg rounded-sm overflow-hidden flex flex-col group transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 snap-center";
+                
                 const badgeHTML = room.badge ? `<div class="absolute top-4 right-4 bg-white/90 text-brand-dark px-3 py-1 text-xs font-bold uppercase tracking-wider shadow-sm z-10">${room.badge}</div>` : '';
+
                 roomCard.innerHTML = `
-                    <div class="relative w-full aspect-[4/5] overflow-hidden"><img src="${room.img}" alt="${room.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">${badgeHTML}</div>
+                    <div class="relative w-full aspect-[4/5] overflow-hidden">
+                        <img src="${room.img}" alt="${room.title}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                        ${badgeHTML}
+                    </div>
                     <div class="p-6 text-center flex-1 flex flex-col justify-between">
-                        <div><h3 class="font-serif text-2xl text-brand-dark mb-2 group-hover:text-brand-gold transition-colors">${room.title}</h3><p class="text-gray-500 text-sm mb-4">${room.desc}</p><div class="flex justify-center gap-4 text-gray-400 text-sm mb-6 border-b border-gray-100 pb-6"><span title="Beds"><i class="fa-solid fa-bed"></i> ${room.beds}</span><span title="View"><i class="fa-solid fa-image"></i> ${room.view}</span><span title="AC"><i class="fa-solid fa-snowflake"></i> ${room.ac}</span></div></div>
-                        <button onclick="bookSpecificRoom('${room.title}')" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 border border-brand-green text-brand-green hover:bg-brand-green hover:text-white transition-all duration-300 rounded-sm font-bold uppercase tracking-wider text-xs"><i class="fa-brands fa-whatsapp text-lg"></i> Book via WhatsApp</button>
-                    </div>`;
+                        <div>
+                            <h3 class="font-serif text-2xl text-brand-dark mb-2 group-hover:text-brand-gold transition-colors">${room.title}</h3>
+                            <p class="text-gray-500 text-sm mb-4">${room.desc}</p>
+                            
+                            <div class="flex justify-center gap-4 text-gray-400 text-sm mb-6 border-b border-gray-100 pb-6">
+                                <span title="Beds"><i class="fa-solid fa-bed"></i> ${room.beds}</span>
+                                <span title="View"><i class="fa-solid fa-image"></i> ${room.view}</span>
+                                <span title="AC"><i class="fa-solid fa-snowflake"></i> ${room.ac}</span>
+                            </div>
+                        </div>
+
+                        <button onclick="bookSpecificRoom('${room.title}')" class="w-full inline-flex items-center justify-center gap-2 px-6 py-3 border border-brand-green text-brand-green hover:bg-brand-green hover:text-white transition-all duration-300 rounded-sm font-bold uppercase tracking-wider text-xs">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Book via WhatsApp
+                        </button>
+                    </div>
+                `;
                 roomsContainer.appendChild(roomCard);
             });
         }
 
+        // --- DOTS LOGIC ---
         function renderDots() {
             dotsContainer.innerHTML = '';
             roomsList.forEach((_, index) => {
                 const dot = document.createElement('button');
+                // Basic dot styling + active/inactive classes
                 dot.className = `h-2 rounded-full transition-all duration-300 ${index === 0 ? 'w-8 bg-brand-gold' : 'w-2 bg-gray-300 hover:bg-brand-gold/50'}`;
+                dot.ariaLabel = `Go to slide ${index + 1}`;
+                
+                // Click to scroll to specific card
                 dot.addEventListener('click', () => {
                     const card = roomsContainer.children[index];
+                    // Center the card in the view
                     const scrollPos = card.offsetLeft - (roomsContainer.clientWidth / 2) + (card.clientWidth / 2);
                     roomsContainer.scrollTo({ left: scrollPos, behavior: 'smooth' });
                 });
+                
                 dotsContainer.appendChild(dot);
             });
         }
 
         function updateActiveDot() {
+            // Find the center point of the visible scroll area
             const center = roomsContainer.scrollLeft + (roomsContainer.clientWidth / 2);
             const cards = Array.from(roomsContainer.children);
-            let activeIndex = 0, minDist = Infinity;
+            
+            let activeIndex = 0;
+            let minDist = Infinity;
+
+            // Find which card is closest to the center
             cards.forEach((card, index) => {
                 const cardCenter = card.offsetLeft + (card.clientWidth / 2);
                 const dist = Math.abs(center - cardCenter);
-                if (dist < minDist) { minDist = dist; activeIndex = index; }
+                if (dist < minDist) {
+                    minDist = dist;
+                    activeIndex = index;
+                }
             });
+
+            // Update dot styles
             const dots = dotsContainer.children;
             for (let i = 0; i < dots.length; i++) {
-                dots[i].className = i === activeIndex ? "h-2 rounded-full transition-all duration-300 w-8 bg-brand-gold" : "h-2 rounded-full transition-all duration-300 w-2 bg-gray-300 hover:bg-brand-gold/50";
+                if (i === activeIndex) {
+                    dots[i].className = "h-2 rounded-full transition-all duration-300 w-8 bg-brand-gold";
+                } else {
+                    dots[i].className = "h-2 rounded-full transition-all duration-300 w-2 bg-gray-300 hover:bg-brand-gold/50";
+                }
             }
         }
 
         renderRooms();
-        renderDots();
-        const scrollAmount = 400;
-        if (roomNextBtn) roomNextBtn.addEventListener('click', () => roomsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
-        if (roomPrevBtn) roomPrevBtn.addEventListener('click', () => roomsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
-        roomsContainer.addEventListener('scroll', () => window.requestAnimationFrame(updateActiveDot));
+        renderDots(); // Initial render of dots
 
-        // --- BLOG LOGIC ---
-        const blogPosts = [
-            {
-                title: "Explore Kakkadampoyil: The Gavi of Malabar",
-                date: "May 12, 2022",
-                desc: "Experience the Western Ghats coming alive with lush greenery and misty mornings.",
-                image: "./files/blogs/explore-kakkadampoyil/cover.jpeg",
-                link: "blogs/explore-kakkadampoyil.html"
-            }
-        ];
+        // Scroll Logic
+        const scrollAmount = 400; // Approx card width
 
-        const blogGrid = document.getElementById('blog-grid');
-        const blogViewMore = document.getElementById('blog-view-more');
-
-        function renderBlogs() {
-            const visiblePosts = blogPosts.slice(0, 3);
-            blogGrid.innerHTML = visiblePosts.map(post => `
-                <a href="${post.link}" class="group block bg-white shadow-md hover:shadow-xl transition-all duration-300 rounded-sm overflow-hidden">
-                    <div class="relative h-64 overflow-hidden">
-                        <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors"></div>
-                    </div>
-                    <div class="p-6">
-                        <span class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-2 block">${post.date}</span>
-                        <h3 class="font-serif text-xl text-brand-dark mb-3 group-hover:text-brand-green transition-colors">${post.title}</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-4">${post.desc}</p>
-                        <span class="text-xs font-bold text-brand-dark border-b border-brand-dark pb-1 inline-block group-hover:text-brand-gold group-hover:border-brand-gold transition-all">Read Story</span>
-                    </div>
-                </a>
-            `).join('');
-            if (blogPosts.length > 3) blogViewMore.classList.remove('hidden');
+        if (roomNextBtn) {
+            roomNextBtn.addEventListener('click', () => {
+                roomsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            });
         }
 
-        renderBlogs();
+        if (roomPrevBtn) {
+            roomPrevBtn.addEventListener('click', () => {
+                roomsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            });
+        }
+
+        // Update dots on scroll
+        roomsContainer.addEventListener('scroll', () => {
+            window.requestAnimationFrame(updateActiveDot);
+        });
+
     </script>
 </body>
 </html>
